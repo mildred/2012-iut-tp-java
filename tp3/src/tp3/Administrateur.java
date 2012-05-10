@@ -23,7 +23,18 @@ public class Administrateur extends JFrame
 	 */
 	private void serialiserBanque()
 	{
-	// TODO à écrire
+		try {
+			FileOutputStream out = new FileOutputStream("banque.data"); 
+		    ObjectOutputStream os;
+			os = new ObjectOutputStream(out);
+			os.writeObject(banque);
+			os.flush();
+	    	os.close();
+	    	out.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -34,7 +45,17 @@ public class Administrateur extends JFrame
 	 */
 	private void deserialiserBanque()
 	{
-	// TODO à écrire
+		try {
+			FileInputStream in = new FileInputStream("banque.data"); 
+			ObjectInputStream is = new ObjectInputStream(in);
+			banque = (Banque) is.readObject();
+			automate.setBanque(banque);
+			is.close();
+			in.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private Banque				banque				= null;

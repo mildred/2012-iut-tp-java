@@ -5,10 +5,12 @@
 
 package tp3;
 
+import java.io.Serializable;
+
 /**
  * @author Madjid KETFI
  */
-public class Automate
+public class Automate implements Serializable
 {
 	private static Automate	automate	= null;
 	private Banque			banque		= null;

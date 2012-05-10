@@ -5,12 +5,13 @@
 
 package tp3;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  * @author Madjid KETFI
  */
-public class Banque
+public class Banque implements Serializable
 {
 	private String			nom		= null;
 	private static Banque	banque	= null;

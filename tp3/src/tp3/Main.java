@@ -19,6 +19,9 @@ public class Main {
 
 		// créer l'utilisateur de l'ATM
 		Utilisateur user = new Utilisateur(automate);
+
+		// créer un administrateur de la banque
+		Administrateur admin = new Administrateur(banque, automate);
 	}
 
 }

@@ -5,13 +5,14 @@
 
 package tp3;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
 /**
  * @author Madjid KETFI
  */
-public class Compte
+public class Compte implements Serializable
 {
 	private int		code		= 0;
 	private String	client		= null;

@@ -45,9 +45,23 @@ public class Utilisateur extends JFrame
 	 * @param somme
 	 * @return
 	 */
-	public void crediter(/* à compléter si besoin */)
+	public void crediter()
 	{
-	// TODO à écrire
+		try
+		{
+			int code = Integer.parseInt(champNumCompte.getText());
+			int somme = Integer.parseInt(champSomme.getText());
+			champSomme.setText("");
+			boolean resultat = automate.crediter(code, somme);
+			if (resultat)
+				champStatut.setText("Opération bien déroulée.");
+			else
+				champStatut.setText("Opération mal déroulée.");
+		}
+		catch (NumberFormatException e)
+		{
+			champStatut.setText("Attention : saisie incorrecte !");
+		}
 	}
 
 	/**
@@ -57,9 +71,23 @@ public class Utilisateur extends JFrame
 	 * @param somme
 	 * @return
 	 */
-	public void debiter(/* à compléter si besoin */)
+	public void debiter()
 	{
-	// TODO à écrire
+		try
+		{
+			int code = Integer.parseInt(champNumCompte.getText());
+			int somme = Integer.parseInt(champSomme.getText());
+			champSomme.setText("");
+			boolean resultat = automate.debiter(code, somme);
+			if (resultat)
+				champStatut.setText("Opération bien déroulée.");
+			else
+				champStatut.setText("Opération mal déroulée.");
+		}
+		catch (NumberFormatException e)
+		{
+			champStatut.setText("Attention : saisie incorrecte !");
+		}
 	}
 
 	private javax.swing.JPanel	jContentPane	= null;

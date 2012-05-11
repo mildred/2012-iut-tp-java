@@ -224,8 +224,8 @@ public class MyView extends JFrame implements Observer
 
 	@Override
 	public void update(Observable o, Object arg) {
-		//jScrollBar1.setValue(model.getTempVille1());
-		//jScrollBar2.setValue(model.getTempVille2());
-		//jScrollBar3.setValue(model.getTempVille3());
+		jLabel1.setText(Integer.toString(model.getTempVille1()));
+		jLabel2.setText(Integer.toString(model.getTempVille2()));
+		jLabel3.setText(Integer.toString(model.getTempVille3()));
 	}
 }

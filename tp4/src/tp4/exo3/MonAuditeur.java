@@ -3,11 +3,14 @@
  * @author : Madjid KETFI LP - Programmation par composants
  */
 
-package tp4.exo1;
+package tp4.exo3;
 
 import java.awt.Color;
+import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,7 +22,7 @@ import javax.swing.JScrollBar;
 /**
  * @author Madjid KETFI Nom : Description :
  */
-public class MonAuditeur extends JFrame
+public class MonAuditeur extends JFrame implements MouseMotionListener
 {
 	private static final long	serialVersionUID	= -8413226520808086107L;
 	private javax.swing.JPanel	jContentPane	= null;
@@ -29,6 +32,7 @@ public class MonAuditeur extends JFrame
 		super();
 		initialize();
 		this.setVisible(true);
+		this.addMouseMotionListener(this);
 	}
 
 	/**
@@ -62,4 +66,15 @@ public class MonAuditeur extends JFrame
 	{
 		MonAuditeur test = new MonAuditeur();
 	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		this.setTitle("Mouse Dragged: " + Integer.toString(e.getX()) + " - " + Integer.toString(e.getY()));
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		this.setTitle("Mouse Moved: " + Integer.toString(e.getX()) + " - " + Integer.toString(e.getY()));
+	}
+
 }

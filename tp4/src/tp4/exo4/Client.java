@@ -1,15 +1,20 @@
-package tp4.exo1;
+package tp4.exo4;
+
+import java.text.DateFormat;
+import java.util.Date;
 
 import javax.swing.JFrame;
 
-public class Client extends JFrame
+public class Client extends JFrame implements MAJListener
 {
 	private static final long	serialVersionUID	= -4587889840050997779L;
 	private javax.swing.JPanel	jContentPane		= null;
+	private int num;
 
 	public Client(String nom)
 	{
 		super();
+		num = 0;
 		initialize();
 		this.setTitle(nom);
 		this.setVisible(true);
@@ -29,5 +34,12 @@ public class Client extends JFrame
 			jContentPane.setLayout(null);
 		}
 		return jContentPane;
+	}
+
+	@Override
+	public void evenementRecu(MAJEvent evt) {
+		num++;
+		DateFormat f = DateFormat.getInstance();
+		setTitle(Integer.toString(num) + " - " + f.format(new Date()) + evt.nom);
 	}
 }

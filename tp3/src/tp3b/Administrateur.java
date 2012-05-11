@@ -31,6 +31,7 @@ public class Administrateur extends JFrame
 		try {
 			FileWriter out = new FileWriter("banque.xml");
 			Marshaller m = jc.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, new Boolean(true));
 			m.marshal(banque, out);
 			out.flush();
 	    	out.close();
@@ -49,11 +50,10 @@ public class Administrateur extends JFrame
 	private void deserialiserBanque()
 	{
 		try {
-			FileInputStream in = new FileInputStream("banque.data"); 
-			ObjectInputStream is = new ObjectInputStream(in);
-			banque = (Banque) is.readObject();
+			FileReader in = new FileReader("banque.xml");
+			Unmarshaller m = jc.createUnmarshaller();
+			banque = (Banque) m.unmarshal(in);
 			automate.setBanque(banque);
-			is.close();
 			in.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -158,7 +158,7 @@ public class Administrateur extends JFrame
 		this.banque = banque;
 		this.automate = autom;
 		try {
-			this.jc = JAXBContext.newInstance("tp3b"); // current package
+			this.jc = JAXBContext.newInstance(Banque.class, Compte.class);
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

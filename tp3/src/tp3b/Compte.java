@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * @author Madjid KETFI
  */
-public class Compte implements Serializable
+public class Compte
 {
 	private int		code		= 0;
 	private String	client		= null;

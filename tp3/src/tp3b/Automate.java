@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * @author Madjid KETFI
  */
-public class Automate implements Serializable
+public class Automate
 {
 	private static Automate	automate	= null;
 	private Banque			banque		= null;

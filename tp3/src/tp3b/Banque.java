@@ -8,10 +8,13 @@ package tp3b;
 import java.io.Serializable;
 import java.util.Vector;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * @author Madjid KETFI
  */
-public class Banque implements Serializable
+@XmlRootElement
+public class Banque
 {
 	private String			nom		= null;
 	private static Banque	banque	= null;
@@ -109,5 +112,12 @@ public class Banque implements Serializable
 				return cpt;
 		}
 		return null;
+	}
+
+	public String getNom(){
+		return nom;
+	}
+	public void setNom(String n){
+		nom = n;
 	}
 }

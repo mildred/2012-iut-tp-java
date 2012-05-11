@@ -32,7 +32,7 @@ public class Appli {
 
 			Component o = (Component) cls.newInstance();
 			DynamicInterface iface = new DynamicInterface();
-			iface.setVisible(true)
+			iface.setVisible(true);
 			iface.add(o);
 
 			Method methods[] = cls.getMethods();

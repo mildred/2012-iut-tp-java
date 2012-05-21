@@ -6,6 +6,7 @@
 package tp4.exo3;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -22,17 +23,31 @@ import javax.swing.JScrollBar;
 /**
  * @author Madjid KETFI Nom : Description :
  */
-public class MonAuditeur extends JFrame implements MouseMotionListener
+public class MonAuditeur extends JFrame
 {
 	private static final long	serialVersionUID	= -8413226520808086107L;
 	private javax.swing.JPanel	jContentPane	= null;
+	private int x = 0;
+	private int y = 0;
 
 	public MonAuditeur()
 	{
 		super();
 		initialize();
 		this.setVisible(true);
-		this.addMouseMotionListener(this);
+		this.addMouseMotionListener(new MouseMotionListener(){
+
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				dragMouse(e.getX(), e.getY());
+			}
+
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				moveMouse(e.getX(), e.getY());
+			}
+			
+		});
 	}
 
 	/**
@@ -56,7 +71,12 @@ public class MonAuditeur extends JFrame implements MouseMotionListener
 	{
 		if (jContentPane == null)
 		{
-			jContentPane = new javax.swing.JPanel();
+			jContentPane = new javax.swing.JPanel(){
+				public void paintComponent(Graphics g) {
+			        super.paintComponent(g);       
+			        g.drawString("X", x, y);
+			    }
+			};
 			jContentPane.setLayout(null);
 		}
 		return jContentPane;
@@ -66,15 +86,19 @@ public class MonAuditeur extends JFrame implements MouseMotionListener
 	{
 		MonAuditeur test = new MonAuditeur();
 	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		this.setTitle("Mouse Dragged: " + Integer.toString(e.getX()) + " - " + Integer.toString(e.getY()));
+	
+	private void dragMouse(int x, int y){
+		this.x = x;
+		this.y = y;
+		jContentPane.repaint();
+		this.setTitle("Mouse Dragged: " + Integer.toString(x) + " - " + Integer.toString(y));
 	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		this.setTitle("Mouse Moved: " + Integer.toString(e.getX()) + " - " + Integer.toString(e.getY()));
+	
+	private void moveMouse(int x, int y){
+		this.x = x;
+		this.y = y;
+		jContentPane.repaint();
+		this.setTitle("Mouse Moved: " + Integer.toString(x) + " - " + Integer.toString(y));
 	}
 
 }
